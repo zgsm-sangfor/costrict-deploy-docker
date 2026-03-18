@@ -1,0 +1,258 @@
+{
+    "common.to_many_request": {
+        "message": "The number of requests on your network has reached the limit, please try again later",
+        "solution": "Please try again later."
+    },
+    "quota-manager.bad_request": {
+        "message": "Bad Request - Invalid request parameters",
+        "solution": "Please confirm whether the request parameters are correct"
+    },
+    "quota-manager.unauthorized": {
+        "message": "Unauthorized - Authentication failed",
+        "solution": "Please log in again"
+    },
+    "quota-manager.internal_error": {
+        "message": "Internal Server Error - Unexpected server error",
+        "solution": "Please contact the administrator"
+    },
+    "quota-manager.invalid_strategy_id": {
+        "message": "Invalid Strategy ID - Strategy ID format is invalid",
+        "solution": "Please confirm whether the policy ID is correct"
+    },
+    "quota-manager.strategy_not_found": {
+        "message": "Strategy Not Found - Strategy with specified ID not found",
+        "solution": "Please confirm whether the policy ID is correct"
+    },
+    "quota-manager.insufficient_quota": {
+        "message": "Insufficient Quota - User does not have enough quota",
+        "solution": "Please try again after obtaining more credits"
+    },
+    "quota-manager.voucher_invalid": {
+        "message": "Voucher Invalid - Voucher code is invalid or malformed",
+        "solution": "Please use a valid redemption code"
+    },
+    "quota-manager.voucher_expired": {
+        "message": "Voucher Expired - Voucher code has expired",
+        "solution": "Please use a valid redemption code"
+    },
+    "quota-manager.voucher_already_redeemed": {
+        "message": "Voucher Already Redeemed - Voucher has been used",
+        "solution": "Please use a valid redemption code"
+    },
+    "quota-manager.token_invalid": {
+        "message": "Token Invalid - Invalid or missing JWT token",
+        "solution": "Please log in again"
+    },
+    "quota-manager.quota_transfer_failed": {
+        "message": "Quota Transfer Failed - Failed to transfer quota",
+        "solution": "Please try again or contact the administrator"
+    },
+    "quota-manager.database_error": {
+        "message": "Database Error - Database operation failed",
+        "solution": "Please try again or contact the administrator"
+    },
+    "quota-manager.aigateway_error": {
+        "message": "AiGateway Error - AiGateway service error",
+        "solution": "Please try again or contact the administrator"
+    },
+    "ai-gateway.build_models_failed": {
+        "message": "",
+        "solution": "Please try again"
+    },
+    "ai-gateway.send_models_response_failed": {
+        "message": "",
+        "solution": "Please try again"
+    },
+    "ai-gateway.unauthorized": {
+        "message": "Management API authentication failed",
+        "solution": "Please log in again"
+    },
+    "ai-gateway.no_token": {
+        "message": "JWT token not provided",
+        "solution": "Please log in again"
+    },
+    "ai-gateway.invalid_token": {
+        "message": "Invalid JWT token format",
+        "solution": "Please log in again"
+    },
+    "ai-gateway.token_parse_failed": {
+        "message": "JWT token parsing failed",
+        "solution": "Please log in again"
+    },
+    "ai-gateway.no_userid": {
+        "message": "User ID not found in JWT token",
+        "solution": "Please log in again"
+    },
+    "ai-gateway.no_employee_number": {
+        "message": "Employee ID does not exist",
+        "solution": "Please confirm whether the user ID is correct"
+    },
+    "ai-gateway.model_permission_denied": {
+        "message": "No permission for the corresponding model",
+        "solution": "Please apply for model access permission first"
+    },
+    "ai-gateway.total_quota_error": {
+        "message": "Failed to retrieve total quota",
+        "solution": "Please try again or contact the administrator"
+    },
+    "ai-gateway.used_quota_error": {
+        "message": "Failed to retrieve used quota",
+        "solution": "Please try again or contact the administrator"
+    },
+    "ai-gateway.insufficient_quota": {
+        "message": "Insufficient quota - User does not have enough quota",
+        "solution": "Please try again after obtaining more credits"
+    },
+    "ai-gateway.deduction_failed": {
+        "message": "Quota deduction failed",
+        "solution": "Please try again or contact the administrator"
+    },
+    "ai-gateway.deduction_inconsistent": {
+        "message": "Quota data anomaly",
+        "solution": "Please contact the administrator"
+    },
+    "ai-gateway.invalid_params": {
+        "message": "Invalid request parameters",
+        "solution": "Please confirm whether the request parameters are correct"
+    },
+    "ai-gateway.redis_error": {
+        "message": "Redis connection error",
+        "solution": "Please try again or contact the administrator"
+    },
+    "ai-gateway.invalid_quota_format": {
+        "message": "Quota data anomaly",
+        "solution": "Please contact the administrator"
+    },
+    "ai-gateway.invalid_quota_value": {
+        "message": "Quota data anomaly",
+        "solution": "Please contact the administrator"
+    },
+    "ai-gateway.star_required": {
+        "message": "Need to star the GitHub project first",
+        "solution": "You need to star the GitHub project first"
+    },
+    "ai-gateway.concurrent_limit": {
+        "message": "Concurrent connections have reached the limit",
+        "solution": "Please try again later or disconnect other requests(Cancelled requests might still be running. You can try restarting VS Code to completely close the connection.)."
+    },
+    "oidc-auth.badRequestParameter": {
+        "message": "Parameter passing error",
+        "solution": "Please initiate login through the VSCode plugin, do not manually modify request parameters"
+    },
+    "oidc-auth.loginEncryptFailed": {
+        "message": "Login data encryption failed",
+        "solution": "Please initiate login through the VSCode plugin, do not manually modify request parameters"
+    },
+    "oidc-auth.LoginDecryptFailed": {
+        "message": "Login data decryption failed",
+        "solution": "Please initiate login through the VSCode plugin, do not manually modify request parameters"
+    },
+    "oidc-auth.userNotFound": {
+        "message": "User does not exist",
+        "solution": "Please log in again to obtain a valid token"
+    },
+    "oidc-auth.tokenInvalid": {
+        "message": "Invalid token",
+        "solution": "Please log in again to obtain a valid token"
+    },
+    "oidc-auth.updateInfoFailed": {
+        "message": "Update information failed",
+        "solution": "Please try again or log in again"
+    },
+    "oidc-auth.bindAccountFailed": {
+        "message": "Account binding failed",
+        "solution": "Please try again or log in again"
+    },
+    "oidc-auth.tokenGenerateFailed": {
+        "message": "Failed to generate token",
+        "solution": "Please try again or log in again"
+    },
+    "oidc-auth.authenticationFailed": {
+        "message": "Authentication failed",
+        "solution": "Please log in again to obtain a valid token"
+    },
+    "chat-rag.context_length_exceeded": {
+        "message": "The request exceeds the model's maximum context length. Please reduce the length of your input.",
+        "solution": "It might be due to an excessive number of conversation rounds or reading a large file/non-text file. To continue, please create a new task."
+    },
+    "chat-rag.model_services_unavailable": {
+        "message": "Unable to access the AI model services. Please try again later.",
+        "solution": "The service may be unavailable due to an excessively long context, model overload, timeout while queuing for the model, non-existence of the model, or abnormality in model service. It is suggested that you check whether the current context contains very large files leading to an overly long context, and refresh the model list to confirm the existence of the model."
+    },
+    "chat-rag.internal_error": {
+        "message": "Internal Server Error",
+        "solution": "Please try again later, or contact the administrator."
+    },
+    "chat-rag.model_unavailable": {
+        "message": "The current model is unavailable (it may have been discontinued); please select another model.",
+        "solution": "Please try another model"
+    },
+    "chat-rag.model_services_unauthorized": {
+        "message": "Unauthorized access to model services. Please check your permissions.",
+        "solution": "Please log in again"
+    },
+    "chat-rag.too_many_requests": {
+        "message": "CoStrict is functioning normally, but the request count or total token usage has reached the limit imposed by the upstream model provider. Please try again later.",
+        "solution": "Please try again later."
+    },
+    "chat-rag.context_too_long": {
+        "message": "Context too long/abnormal",
+        "solution": "It may be due to an excessive number of dialogue rounds or reading large files/non-text files, causing the context to contain abnormal characters or exceed the model's limit. To continue, please create a new task."
+    },
+    "chat-rag.network_interrupt": {
+        "message": "Internal network interruption.",
+        "solution": "The internal server's connection to the model service was interrupted due to network fluctuations (possibly caused by network anomalies or slow model inference). Please try again later."
+    },
+    "chat-rag.server_busy": {
+        "message": "The model service is busy.",
+        "solution": "The request has been sent to the model service, but it has not returned the first token for a long time, which may be due to an excessive number of online users causing significant pressure on the model. Please try again later."
+    },
+    "chat-rag.stream_idle_timeout": {
+        "message": "The model response has timed out.",
+        "solution": "The model may not have responded within the specified time due to load or other reasons, please retry. If it fails multiple times, please contact the administrator."
+    },
+    "chat-rag.total_stream_idle_timeout": {
+        "message": "The model response has timed out.",
+        "solution": "The model may not have responded within the specified time due to load or other reasons, please retry. If it fails multiple times, please contact the administrator."
+    },
+    "chat-rag.invalid_response_content": {
+        "message": "The model is unable to perform inference or makes errors during inference.",
+        "solution": "The current model inference is abnormal (there is no output, which might be due to excessively long context or only processing without actual output). It's recommended to start a new task and avoid directly feeding large files and non-pure text to the model for processing. (The calculation method for context overflow is: historical context length + current session context length + maximum output token number > total context length)."
+    },
+    "codebase-indexer.unsupported_language": {
+        "message": "Unsupported Language",
+        "solution": "The programming language is currently not supported"
+    },
+    "codebase-indexer.network_connection_error": {
+        "message": "Network connection error",
+        "solution": ""
+    },
+    "codebase-indexer.authentication_failed": {
+        "message": "Authentication failed",
+        "solution": "Please log in again to obtain a valid token"
+    },
+    "codebase-indexer.internal_server_error": {
+        "message": "Internal Server Error",
+        "solution": "Please try again later, or contact the administrator."
+    },
+    "codebase-indexer.file_embedding_failed": {
+        "message": "File embedding failed",
+        "solution": ""
+    },
+    "codebase-indexer.bad_request": {
+        "message": "Bad Request",
+        "solution": "Please confirm whether the request parameters are correct"
+    },
+    "codebase-indexer.workspace_not_registered": {
+        "message": "Workspace not registered",
+        "solution": "Please restart the IDE or rebuild the index"
+    },
+    "codebase-querier.findPortFailed": {
+        "message": "findPortFailed",
+        "solution": "Check if the client reverse proxy tunnel is successful"
+    },
+    "codebase-embedder.server_busy": {
+        "message": "Vector construction service is busy",
+        "solution": ""
+    }
+}

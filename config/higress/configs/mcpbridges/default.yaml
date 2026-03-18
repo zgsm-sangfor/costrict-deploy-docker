@@ -1,0 +1,28 @@
+apiVersion: networking.higress.io/v1
+kind: McpBridge
+metadata:
+  creationTimestamp: "2000-01-01T00:00:00Z"
+  managedFields:
+  - apiVersion: networking.higress.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:registries: {}
+    manager: Kubernetes Java Client
+    operation: Update
+    time: "2026-03-17T07:41:16Z"
+  name: default
+  namespace: higress-system
+  resourceVersion: "23"
+spec:
+  registries:
+  - domain: 127.0.0.1:8001
+    name: higress-console
+    port: 80
+    type: static
+  - domain: model-server
+    name: llm-example.internal
+    port: 80
+    protocol: http
+    type: dns
+status: {}

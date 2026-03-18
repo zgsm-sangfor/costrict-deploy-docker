@@ -1,0 +1,50 @@
+apiVersion: extensions.higress.io/v1alpha1
+kind: WasmPlugin
+metadata:
+  annotations:
+    higress.io/wasm-plugin-title: AI Statistics
+  creationTimestamp: null
+  labels:
+    higress.io/resource-definer: higress
+    higress.io/wasm-plugin-built-in: "true"
+    higress.io/wasm-plugin-category: ai
+    higress.io/wasm-plugin-name: ai-statistics
+    higress.io/wasm-plugin-version: 1.0.0
+  managedFields:
+  - apiVersion: extensions.higress.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:matchRules: {}
+        f:url: {}
+    manager: Kubernetes Java Client
+    operation: Update
+    time: "2026-03-17T07:41:54Z"
+  name: ai-statistics-1.0.0
+  namespace: higress-system
+  resourceVersion: "21"
+spec:
+  defaultConfigDisable: true
+  failStrategy: FAIL_OPEN
+  matchRules:
+  - config:
+      attributes:
+      - apply_to_log: true
+        key: question
+        value: messages.@reverse.0.content
+        value_source: request_body
+      - apply_to_log: true
+        key: answer
+        rule: append
+        value: choices.0.delta.content
+        value_source: response_streaming_body
+      - apply_to_log: true
+        key: answer
+        value: choices.0.message.content
+        value_source: response_body
+    configDisable: false
+    ingress:
+    - ai-route-example.internal
+  priority: 900
+  url: http://portal:80/wasm/ai-statistics.wasm
+status: {}

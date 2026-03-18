@@ -1,0 +1,59 @@
+apiVersion: v1
+data:
+  root-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    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
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2026-03-16T12:29:04Z"
+  labels:
+    istio.io/config: "true"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:root-cert.pem: {}
+      f:metadata:
+        f:labels:
+          .: {}
+          f:istio.io/config: {}
+    manager: pilot-discovery
+    operation: Update
+    time: "2026-03-17T07:43:45Z"
+  name: higress-ca-root-cert
+  namespace: higress-system
+  resourceVersion: "3"
