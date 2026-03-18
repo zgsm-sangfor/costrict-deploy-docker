@@ -13,7 +13,7 @@ docker-compose.yml
 
 
 data/**
-docs/**
+doc/**
 
 # tpl same to ./scripts/templates.list
 config/apisix/config.yaml

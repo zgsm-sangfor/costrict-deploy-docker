@@ -2,7 +2,7 @@
 #---------------------------------------------------------
 # CoStrict服务端设置，http://${COSTRICT_BACKEND}:${PORT_APISIX_ENTRY} 将成为为你的BaseUrl
 #---------------------------------------------------------
-COSTRICT_BACKEND="192.168.79.130"
+COSTRICT_BACKEND=""
 PORT_APISIX_ENTRY="39080"
 
 
@@ -12,17 +12,19 @@ PORT_APISIX_ENTRY="39080"
 # 模型服务器的IP，需要根据实际情况设置
 MODEL_SERVER_IP="10.72.12.32"
 # 对话模型的BASEURL,DEFAULT_MODEL,MODEL_CONTEXTSIZE,APIKEY，初始化后更新配置需在higress中修改
-CHAT_MODEL_HOST="${MODEL_SERVER_IP}:2334"
-CHAT_BASEURL="http://${CHAT_MODEL_HOST}"
-CHAT_DEFAULT_MODEL="GLM-4.5-FP8"
-CHAT_MODEL_DESC="GLM-4.5-FP8量化版——又快又好用的顶尖大模型"
-CHAT_MODEL_CONTEXTSIZE=128000
-CHAT_APIKEY=""
 
-# CodeReview模型设置 Chat模型
-REVIEW_MODEL_BASEURL="http://${MODEL_SERVER_IP}:2333/v1"
-REVIEW_MODEL_MODEL="Review-Model"
-REVIEW_MODEL_APIKEY=""
+# 已废弃，到higress中配置
+# CHAT_MODEL_HOST="${MODEL_SERVER_IP}:2334"
+# CHAT_BASEURL="http://${CHAT_MODEL_HOST}"
+# CHAT_DEFAULT_MODEL="GLM-4.5-FP8"
+# CHAT_MODEL_DESC="GLM-4.5-FP8量化版——又快又好用的顶尖大模型"
+# CHAT_MODEL_CONTEXTSIZE=128000
+# CHAT_APIKEY=""
+
+# CodeReview模型，已废弃，将直接采用Chat模型
+# REVIEW_MODEL_BASEURL="http://${MODEL_SERVER_IP}:2333/v1"
+# REVIEW_MODEL_MODEL="Review-Model"
+# REVIEW_MODEL_APIKEY=""
 # 代码补全模型的BASEURL,MODEL,APIKEY
 COMPLETION_BASEURL="https://dashscope.aliyuncs.com/compatible-mode/v1/completions"
 COMPLETION_MODEL="deepseek-r1-distill-qwen-7b"
