@@ -43,23 +43,23 @@ metadata:
         f:url: {}
     manager: Kubernetes Java Client
     operation: Update
-    time: "2026-03-17T07:41:54Z"
+    time: "2026-03-18T07:05:53Z"
   name: model-mapper.internal
   namespace: higress-system
-  resourceVersion: "1"
+  resourceVersion: "4"
 spec:
   defaultConfigDisable: true
   failStrategy: FAIL_OPEN
   matchRules:
   - config:
       modelMapping:
-        '*': 真实的模型名
+        '*': dest-model-name
     configDisable: false
     ingress:
-    - ai-route-example.internal
+    - ai-route-costrict-example.internal
     service:
-    - llm-example.internal.dns
+    - llm-costrict-example.internal.dns
   phase: AUTHN
   priority: 800
-  url: oci://higress-registry.cn-hangzhou.cr.aliyuncs.com/plugins/model-mapper:2.0.0
+  url: http://portal:80/wasm/model_mapper.wasm
 status: {}

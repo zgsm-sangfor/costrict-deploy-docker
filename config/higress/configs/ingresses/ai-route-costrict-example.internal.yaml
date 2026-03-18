@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   annotations:
     higress.io/comment: PLEASE DO NOT EDIT DIRECTLY. This resource is managed by Higress.
-    higress.io/destination: llm-example.internal.dns:80
-    higress.io/exact-match-header-x-higress-llm-model: 插件端看到的模型名
+    higress.io/destination: llm-costrict-example.internal.dns:80
+    higress.io/exact-match-header-x-higress-llm-model: model-name
     higress.io/ignore-path-case: "true"
-  creationTimestamp: "2026-03-17T07:41:54Z"
+  creationTimestamp: "2026-03-18T07:05:53Z"
   labels:
     higress.io/domain_higress-default-domain: "true"
     higress.io/internal: "true"
@@ -32,8 +32,8 @@ metadata:
         f:rules: {}
     manager: Kubernetes Java Client
     operation: Update
-    time: "2026-03-17T07:41:54Z"
-  name: ai-route-example.internal
+    time: "2026-03-18T07:05:53Z"
+  name: ai-route-costrict-example.internal
   namespace: higress-system
   resourceVersion: "1"
 spec:

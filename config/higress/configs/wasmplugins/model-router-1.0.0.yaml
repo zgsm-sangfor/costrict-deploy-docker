@@ -41,7 +41,7 @@ metadata:
     time: "2026-03-17T07:38:16Z"
   name: model-router-1.0.0
   namespace: higress-system
-  resourceVersion: "1"
+  resourceVersion: "2"
 spec:
   defaultConfigDisable: true
   failStrategy: FAIL_OPEN

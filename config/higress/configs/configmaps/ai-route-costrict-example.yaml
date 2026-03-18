@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  data: '{"name":"costrict-example","domains":[],"pathPredicate":{"matchType":"PRE","matchValue":"/","caseSensitive":false},"headerPredicates":[],"urlParamPredicates":[],"upstreams":[{"provider":"costrict-example","weight":100,"modelMapping":{"*":"dest-model-name"}}],"modelPredicates":[{"matchType":"EQUAL","matchValue":"model-name"}],"authConfig":{"enabled":false},"fallbackConfig":{"enabled":false}}'
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2026-03-18T07:05:53Z"
+  labels:
+    higress.io/config-map-type: ai-route
+    higress.io/resource-definer: higress
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:data: {}
+      f:metadata:
+        f:labels:
+          .: {}
+          f:higress.io/config-map-type: {}
+          f:higress.io/resource-definer: {}
+    manager: Kubernetes Java Client
+    operation: Update
+    time: "2026-03-18T07:05:53Z"
+  name: ai-route-costrict-example
+  namespace: higress-system
+  resourceVersion: "1"

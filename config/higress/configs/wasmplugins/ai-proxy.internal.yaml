@@ -28,7 +28,7 @@ metadata:
         f:url: {}
     manager: Kubernetes Java Client
     operation: Update
-    time: "2026-03-17T07:41:16Z"
+    time: "2026-03-18T07:05:03Z"
   name: ai-proxy.internal
   namespace: higress-system
   resourceVersion: "42"
@@ -36,11 +36,11 @@ spec:
   defaultConfig:
     providers:
     - apiTokens:
-      - this-is-your-key
+      - sk-your-key
       failover:
         enabled: false
-      id: example
-      openaiCustomUrl: http://model-server/v1
+      id: costrict-example
+      openaiCustomUrl: http://modelserver/v1
       openaiExtraCustomUrls: []
       retryOnFailure:
         enabled: false
@@ -49,10 +49,10 @@ spec:
   failStrategy: FAIL_OPEN
   matchRules:
   - config:
-      activeProviderId: example
+      activeProviderId: costrict-example
     configDisable: false
     service:
-    - llm-example.internal.dns
+    - llm-costrict-example.internal.dns
   priority: 100
   url: http://portal:80/wasm/ai-proxy.wasm
 status: {}

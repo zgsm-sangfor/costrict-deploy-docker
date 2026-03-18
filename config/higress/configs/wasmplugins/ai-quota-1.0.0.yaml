@@ -64,7 +64,7 @@ metadata:
     time: "2026-03-17T07:38:40Z"
   name: ai-quota-1.0.0
   namespace: higress-system
-  resourceVersion: "3"
+  resourceVersion: "4"
 spec:
   defaultConfig:
     admin_header: x-admin-key

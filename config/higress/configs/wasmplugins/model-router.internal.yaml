@@ -21,14 +21,12 @@ metadata:
           f:higress.io/comment: {}
         f:labels:
           f:higress.io/internal: {}
-      f:spec:
-        f:url: {}
     manager: Kubernetes Java Client
     operation: Update
-    time: "2026-03-17T07:38:16Z"
+    time: "2026-03-18T07:05:53Z"
   name: model-router.internal
   namespace: higress-system
-  resourceVersion: "3"
+  resourceVersion: "2"
 spec:
   defaultConfig:
     modelToHeader: x-higress-llm-model

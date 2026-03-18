@@ -10,10 +10,10 @@ metadata:
         f:registries: {}
     manager: Kubernetes Java Client
     operation: Update
-    time: "2026-03-17T07:41:16Z"
+    time: "2026-03-18T07:05:03Z"
   name: default
   namespace: higress-system
-  resourceVersion: "23"
+  resourceVersion: "26"
 spec:
   registries:
   - domain: 127.0.0.1:8001
@@ -22,6 +22,11 @@ spec:
     type: static
   - domain: model-server
     name: llm-example.internal
+    port: 80
+    protocol: http
+    type: dns
+  - domain: modelserver
+    name: llm-costrict-example.internal
     port: 80
     protocol: http
     type: dns

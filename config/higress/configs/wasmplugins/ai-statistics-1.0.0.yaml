@@ -19,7 +19,7 @@ metadata:
         f:url: {}
     manager: Kubernetes Java Client
     operation: Update
-    time: "2026-03-17T07:41:54Z"
+    time: "2026-03-18T07:13:59Z"
   name: ai-statistics-1.0.0
   namespace: higress-system
   resourceVersion: "21"
@@ -44,7 +44,7 @@ spec:
         value_source: response_body
     configDisable: false
     ingress:
-    - ai-route-example.internal
+    - ai-route-costrict-example.internal
   priority: 900
   url: http://portal:80/wasm/ai-statistics.wasm
 status: {}
