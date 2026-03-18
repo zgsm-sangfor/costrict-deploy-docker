@@ -1,3 +1,14 @@
+# Usage: apisix_router_setting.sh [--skip-wait]
+# ./apisix_router_setting.sh             
+# ./apisix_router_setting.sh --skip-wait
+
+SKIP_WAIT=false
+for arg in "$@"; do
+  case "$arg" in
+    --skip-wait) SKIP_WAIT=true ;;
+  esac
+done
+
 source ./configure.sh
 export APISIX_ADDR="127.0.0.1:${PORT_APISIX_API}"
 export AUTH="X-API-KEY: ${APIKEY_APISIX_ADMIN}"
@@ -31,7 +42,9 @@ wait_for_apisix() {
   exit 1
 }
 
-wait_for_apisix
+if [ "$SKIP_WAIT" = false ]; then
+  wait_for_apisix
+fi
 
 ./scripts/apisix_router/ai-gateway.sh
 ./scripts/apisix_router/casdoor.sh
