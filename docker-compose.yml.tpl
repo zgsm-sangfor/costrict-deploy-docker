@@ -123,24 +123,6 @@ services:
       - mysql
     networks:
       - shenma
-  weaviate:
-    image: {{IMAGE_WEAVIATE}}
-    restart: always
-    # ports:
-    #   - "{{PORT_WEAVIATE}}:8080"
-    environment:
-      QUERY_DEFAULTS_LIMIT: 25
-      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"
-      PERSISTENCE_DATA_PATH: "/var/lib/weaviate"
-      DEFAULT_VECTORIZER_MODULE: "none"
-      ENABLE_MODULES: ""
-      CLUSTER_HOSTNAME: "weaviate"
-      ASYNC_INDEXING: "true"
-      AUTHENTICATION_APIKEY_ENABLED: "false"
-    volumes:
-      - ./data/weaviate:/var/lib/weaviate
-    networks:
-      - shenma
 
   portal:
     image: {{IMAGE_NGINX}}

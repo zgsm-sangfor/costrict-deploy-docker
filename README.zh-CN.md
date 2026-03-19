@@ -43,8 +43,10 @@ CoStrict后端需要的镜像，可以查看 `scripts/newest-images.list` 文件
 **网盘地址**：
 
 ```http
-https://pan.baidu.com/s/1wOLcGOzWNRFwSjvxpJL3cg?pwd=utpg
+https://pan.baidu.com/s/5H0ppvaTja4g2MKZs0Ki1-g
 ```
+
+当前最新版本: v0.0.3
 
 下载后所有的tar包并复制到服务器的某个目录，运行：
 

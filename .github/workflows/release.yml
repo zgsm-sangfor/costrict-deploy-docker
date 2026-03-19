@@ -63,5 +63,6 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.TAG_NAME }}
           name: "Release ${{ steps.tag.outputs.TAG_NAME }}"
+          body_path: docs/release-notes.md
           files: ${{ env.ARCHIVE_NAME }}
-          generate_release_notes: true
+          generate_release_notes: false

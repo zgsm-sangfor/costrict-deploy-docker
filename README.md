@@ -42,8 +42,10 @@ We provide a Baidu Netdisk download link:
 **Netdisk address**:
 
 ```http
-https://pan.baidu.com/s/1wOLcGOzWNRFwSjvxpJL3cg?pwd=utpg
+https://pan.baidu.com/s/5H0ppvaTja4g2MKZs0Ki1-g
 ```
+
+Newest Version is: v0.0.3
 
 After downloading all tar packages and copying them to a directory on the server, run:
 
