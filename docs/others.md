@@ -82,6 +82,10 @@ docker-compose logs -f [service_name]
 
 # View resource usage
 docker stats
+
+# Update completion model
+bash costrict.sh prepare
+docker compose restart code-completion
 ```
 
 ### Data Backup and Recovery

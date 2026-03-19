@@ -82,6 +82,10 @@ docker-compose logs -f [service_name]
 
 # 查看资源使用情况
 docker stats
+
+# 更新补全模型
+bash costrict.sh prepare
+docker compose restart code-completion
 ```
 
 ### 数据备份与恢复

@@ -25,6 +25,7 @@ MODEL_SERVER_IP="10.72.12.32"
 # REVIEW_MODEL_BASEURL="http://${MODEL_SERVER_IP}:2333/v1"
 # REVIEW_MODEL_MODEL="Review-Model"
 # REVIEW_MODEL_APIKEY=""
+# 允许之后配置,并通过命令行更新配置.
 # 代码补全模型的BASEURL,MODEL,APIKEY
 COMPLETION_BASEURL="https://dashscope.aliyuncs.com/compatible-mode/v1/completions"
 COMPLETION_MODEL="deepseek-r1-distill-qwen-7b"
