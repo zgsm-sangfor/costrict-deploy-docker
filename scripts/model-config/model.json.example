@@ -1,0 +1,29 @@
+{
+    "server": "http://192.168.79.136:38001",
+    "username": "admin",
+    "password": "123",
+    "models": [
+        {
+            "id": "claude",
+            "name": "Claude",
+            "realName": "claude-opus-4-6",
+            "key": "sk-****",
+            "url": "https://model-server.com/v1",
+            "context": 280000,
+            "maxToken": 32000,
+            "desc": "这是描述",
+            "suportImg": false
+        },
+        {
+            "id": "claude2",
+            "name": "Claude2",
+            "realName": "claude-opus-4-6",
+            "key": "sk-****",
+            "url": "https://model-server.com/v1",
+            "context": 280000,
+            "maxToken": 32000,
+            "desc": "这是描述",
+            "suportImg": false
+        }
+    ]
+}

@@ -92,7 +92,10 @@ When the process completes, output similar to the following will be displayed â€
 
 ### AI Gateway Configuration (Higress)
 
-After deployment, access the Higress console at the following address to check and adjust the `chat` model configuration:
+
+You can refer to the tutorial below to configure the model on the page. We also provide a quick model configuration script to simplify your configuration process; see [Model Configuration Automation Script](./scripts/model-config/auto-model-config.md).
+
+After deployment, access the Higress console at the following address to check and adjust the `chat` model configuration.
 
 ```
 # This URL is the second URL shown in the output above

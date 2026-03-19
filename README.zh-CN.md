@@ -93,7 +93,9 @@ bash costrict.sh install
 
 ### AI 网关配置 (Higress)
 
-部署完成后，通过以下地址访问 Higress 控制台，对 `对话` 模型配置检查并调整:
+你可以参考下面的教程在页面上配置模型，我们也提供了快速模型配置脚本，简化你的配置过程，见[模型配置自动化脚本](./scripts/model-config/auto-model-config.zh-CN.md)
+
+部署完成后，通过以下地址访问 Higress 控制台，对 `对话` 模型配置检查并调整.
 
 ```
 # 此url就是提示的第二个url
