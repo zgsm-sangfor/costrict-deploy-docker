@@ -41,7 +41,7 @@ jobs:
         run: tar -zxf costrict.tar.gz -C config/portal/static_file
 
       - name: Extract wasm.tar.gz into config/portal/static_file
-        run: tar -zxf wasm.tar.gz -C config/portal
+        run: tar -zxf wasm.tar.gz -C config/portal/static_file
 
       - name: Remove downloaded tar.gz files
         run: rm -f costrict.tar.gz wasm.tar.gz
