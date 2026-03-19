@@ -1,53 +1,54 @@
-# Casdoor基本配置文档
+# Casdoor Basic Configuration Guide
 
-此文档是从0配置casdoor,本教程大部分配置在安装后已经配置成功了，如果需要添加用户，可以见 **添加用户**
+This document describes how to configure Casdoor from scratch. Most configurations in this tutorial are already set up after installation. If you need to add users, refer to the **Add Users** section.
 
-## 配置页面
+## Configuration Page
 
-### 配置页面访问
+### Accessing the Configuration Page
 
-访问 http://{COSTRICT_BACKEND}:{PORT_CASDOOR}, 进入管理端登陆页面
+Visit http://{COSTRICT_BACKEND}:{PORT_CASDOOR} to access the admin login page.
 
 ```commandline
-默认账号： admin
-默认密码： 123
+Default username: admin
+Default password: 123
 ```
 
-然后进入到管理页面
+Then proceed to the admin dashboard.
 
-## 添加组织
+## Add Organization
 
-添加的这个组织将会存放所有costrict用户,组织的名称并不重要，可自定义
+The organization you create here will store all CoStrict users. The organization name is not critical and can be customized.
 
 ![image-20260120095700101](./casdoor-img/config-images/1-add_org-1.png)
 
 ![image-20260120095741985](./casdoor-img/config-images/1-add_org-2.png)
 
-## 添加应用
+## Add Application
 
-这将是CoStrict登录用到的应用,应用名称并不重要，可自定义.
+This will be the application used for CoStrict login. The application name is not critical and can be customized.
+
 ![image-20260120095801365](./casdoor-img/config-images/2-add_app-1.png)
 
 
 ![image-20260120102644577](./casdoor-img/config-images/2-add_app-2.png)
 
 
-> 客户端ID和客户端密钥对应部署目录`configure.sh`  `OIDC_CLIENT_ID` `OIDC_CLIENT_SECRET`两个变量,如：
+> The Client ID and Client Secret correspond to the `OIDC_CLIENT_ID` and `OIDC_CLIENT_SECRET` variables in the deployment directory's `configure.sh`, for example:
 
 ```
 9e2fc5d4fbcd52ef4f6f
 ab5d8ba28b0e6c0d6e971247cdc1deb269c9eea3
 ```
 
-> 其中 组织是前面新建的组织
+> The organization field should be set to the organization created in the previous step.
 
 ![image-20260120101039642](./casdoor-img/config-images/2-add_app-3.png)
 
 
 
-重定向url,请修改ip和port,可部署目录`configure.sh` 文件中的 `COSTRICT_BACKEND_BASEURL` 的ip端口一致(注意，根据情况选择使用http/https,完整按照本教程，则是使用http 不要用变量，是真实的ip端口)
+For the redirect URLs, update the IP and port to match the `COSTRICT_BACKEND_BASEURL` IP and port defined in the deployment directory's `configure.sh` file. (Note: choose http or https based on your setup. Following this tutorial completely means using http — use the actual IP and port, not variables.)
 
-一键部署已经默认设置了通配符，为保证安全，可以修改此处
+One-click deployment sets a wildcard by default. For better security, you may update this accordingly.
 
 ```
 http://ip:port/oidc-auth/api/v1/plugin/login/callback
@@ -57,24 +58,25 @@ http://ip:port/oidc-auth/api/v1/manager/login/callback
 
 ![image-20260120100515628](./casdoor-img/config-images/2-add_app-4.png)
 
-> 最后，保存当前应用
+> Finally, save the current application.
 
-## 添加用户
+## Add Users
 
-进入组织的用户，然后点击添加
+Navigate to the organization's user list, then click Add.
 
 ![image-20260120102919337](./casdoor-img/config-images/3-add_user-1.png)
 
-添加demo用户，点击保存&退出。
+Add a demo user and click Save & Exit.
 
 ![image-20260120103025347](./casdoor-img/config-images/3-add_user-2.png)
 
-添加后可以修改密码：
+After adding, you can update the password:
+
 ![image-20260120103919026](./casdoor-img/config-images/4-update_user-1.png)
 
 ![image-20260120103933033](./casdoor-img/config-images/4-update_user-2.png)
 
 
-如果你需要批量导入用户，请查看官方教程：[从XLSX文件导入用户](https://www.casdoor.org/zh/docs/user/overview/#%E4%BB%8Exlsx%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E7%94%A8%E6%88%B7)
+If you need to import users in bulk, refer to the official documentation: [Import Users from XLSX File](https://www.casdoor.org/docs/user/overview/#import-users-from-xlsx-file)
 
-> 配置结束，之后就可以使用demo用户登录costrict了(注意是costrict不是casdoor)，如需更多配置，如：oauth,sms,github等配置，参考：[v4 casdoor配置](./casdoor.md)
+> Configuration is complete. You can now log in to CoStrict (not Casdoor) using the demo user. For additional configurations such as OAuth, SMS, GitHub, etc., refer to: [v4 casdoor configuration](./casdoor.md)

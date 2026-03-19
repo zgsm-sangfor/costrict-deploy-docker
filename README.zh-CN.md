@@ -130,7 +130,7 @@ http://{COSTRICT_BACKEND}:{PORT_HIGRESS_CONTROL}
 http://{COSTRICT_BACKEND}:{PORT_CASDOOR}
 ```
 
-基本用户添加参考: [casdoor基本设置](./docs/casdoor/casdoor-init-setting.md)
+基本用户添加参考: [casdoor基本设置](./docs/casdoor/casdoor-init-setting.zh-CN.md)
 
 ## 客户端集成
 
