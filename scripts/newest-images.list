@@ -17,4 +17,3 @@ IMAGE_REVIEW_MANAGER=zgsm/review-manager:2.1.1
 IMAGE_CREDIT_MANAGER=zgsm/credit-manager:v1.3.14
 IMAGE_MYSQL=mysql:9.4.0
 IMAGE_NACOS=nacos/nacos-server:v3.1.1
-IMAGE_WEAVIATE=semitechnologies/weaviate:1.31.0
