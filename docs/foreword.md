@@ -1,3 +1,4 @@
+## About CoStrict
 
 ### Core Features
 
@@ -84,12 +85,9 @@ https://modelscope.cn/models/iic/gte-reranker-modernbert-base
 - Storage: Minimum 512GB available storage (note: this is runtime space required, including the Docker runtime environment and data generated during service operation)
 
 **Software Requirements**:
-- OS: CentOS 7+ or Ubuntu 18.04+ (WSL supported)
+- OS: CentOS 7+ or Ubuntu 20.04+ (WSL supported)
 - Container Runtime: Docker 20.10+ (refer to [offline Docker installation](./how-to-install-docker-offline.md) for offline setup)
 - Orchestration Tool: Docker Compose 2.0+
 
 
 
-## Deployment Checklist
-
-Before starting the deployment, please **open and review the [Deployment Checklist](./docs/deploy-checklist.md)** simultaneously; and **check off all checklist items** throughout the entire deployment process to ensure a successful final deployment.

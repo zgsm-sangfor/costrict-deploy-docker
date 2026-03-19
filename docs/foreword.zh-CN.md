@@ -1,4 +1,4 @@
-
+## 关于CoStrict
 ### 核心特性
 
 - **微服务架构**: 基于容器化的分布式服务架构
@@ -84,12 +84,6 @@ https://modelscope.cn/models/iic/gte-reranker-modernbert-base
 - 存储: 最低 512GB 可用存储空间 (注意是运行需要的空间，包括了docker运行环境，服务运行产生的数据)
 
 **软件要求**:
-- 操作系统: CentOS 7+ 或 Ubuntu 18.04+ (支持 WSL)
+- 操作系统: CentOS 7+ 或 Ubuntu 20.04+ (支持 WSL)
 - Container Runtime: Docker 20.10+ (可参考[离线安装docker](./how-to-install-docker-offline.zh-CN.md)离线安装)
 - 编排工具: Docker Compose 2.0+
-
-
-
-## 部署检查清单
-
-在开始部署之前，请 **同步打开查看 [部署检查清单](./docs/deploy-checklist.zh-CN.md)** 中的内容；并在整个部署过程中 **检查完成所有检查项**，以确保最终部署成功。

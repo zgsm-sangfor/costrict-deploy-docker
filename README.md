@@ -1,5 +1,3 @@
-[TOC]
-
 # CoStrict Backend Deployment Tool
 
 ## Project Overview
