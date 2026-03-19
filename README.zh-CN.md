@@ -17,7 +17,7 @@ CoStrict 后端部署工具是基于 Docker Compose 的企业级 AI 代码助手
 访问一下地址：
 
 ```http
-https://github.com/zgsm-ai/costrict-deploy-docker/releases/
+https://github.com/zgsm-sangfor/costrict-deploy-docker/releases/
 ```
 
 下载最新的release压缩包 `costrict-backend-deploy-vX.X.X.tar.gz` ,如: `costrict-backend-deploy-v0.0.2.tar.gz

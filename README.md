@@ -17,7 +17,7 @@ CoStrict Backend Deployment Tool is an enterprise-level AI code assistant backen
 Visit the following address:
 
 ```http
-https://github.com/zgsm-ai/costrict-deploy-docker/releases/
+https://github.com/zgsm-sangfor/costrict-deploy-docker/releases/
 ```
 
 Download the latest release archive `costrict-backend-deploy-vX.X.X.tar.gz`, e.g. `costrict-backend-deploy-v0.0.2.tar.gz`
