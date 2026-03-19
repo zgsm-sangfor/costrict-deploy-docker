@@ -8,6 +8,7 @@
 #   install  — 完整安装（prepare + 启动所有服务）
 #   down     — 停止并移除所有容器
 #   up       — 启动所有服务
+#   info     — 打印访问地址等提示信息
 # =============================================================================
 
 # set -euo pipefail
@@ -146,9 +147,9 @@ cmd_prepare() {
 # -----------------------------------------------------------------------------
 
 cmd_user_reminder() {
-  info "管理用户访问 http://${COSTRICT_BACKEND}:${PORT_CASDOOR}/"
-  info "配置Chat模型请访问 http://${COSTRICT_BACKEND}:${PORT_HIGRESS_CONTROL}/"
-  info "BaseUrl请设置 http://${COSTRICT_BACKEND}:${PORT_APISIX_ENTRY}/"
+  info "管理用户访问 (casdoor) http://${COSTRICT_BACKEND}:${PORT_CASDOOR}/"
+  info "配置Chat模型请访问 (higress) http://${COSTRICT_BACKEND}:${PORT_HIGRESS_CONTROL}/"
+  info "BaseUrl请设置为 http://${COSTRICT_BACKEND}:${PORT_APISIX_ENTRY}/"
 }
 
 # -----------------------------------------------------------------------------
@@ -230,6 +231,7 @@ usage() {
   install  完整安装（执行 check + prepare + 启动服务(up)）
   down     停止并移除所有容器（支持透传 docker-compose down 参数）
   up       启动所有服务（支持透传 docker-compose up 参数）
+  info     打印访问地址等提示信息
 
 示例:
   $(basename "$0") check
@@ -237,6 +239,7 @@ usage() {
   $(basename "$0") install
   $(basename "$0") down --volumes
   $(basename "$0") up -d
+  $(basename "$0") info
 
 EOF
 }
@@ -274,6 +277,12 @@ main() {
       ;;
     up)
       cmd_up "$@"
+      ;;
+    info)
+      if [[ -f "${SCRIPT_DIR}/configure.sh" ]]; then
+        source "${SCRIPT_DIR}/configure.sh"
+      fi
+      cmd_user_reminder
       ;;
     -h|--help|help)
       usage

@@ -41,14 +41,14 @@ We provide a Baidu Netdisk download link:
 
 **Netdisk address**:
 
-```
-
+```http
+https://pan.baidu.com/s/1wOLcGOzWNRFwSjvxpJL3cg?pwd=utpg
 ```
 
 After downloading all tar packages and copying them to a directory on the server, run:
 
 ```bash
-# /root/images is the directory containing the tar packages; scripts/load-images.sh is in the service deployment directory
+# /root/images is the directory containing the tar packages; scripts/load-images.sh is in the deployment directory
 bash scripts/load-images.sh -l /root/images
 ```
 

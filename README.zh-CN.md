@@ -42,14 +42,14 @@ CoStrict后端需要的镜像，可以查看 `scripts/newest-images.list` 文件
 
 **网盘地址**：
 
+```http
+https://pan.baidu.com/s/1wOLcGOzWNRFwSjvxpJL3cg?pwd=utpg
 ```
 
-```
-
-下载后所有的tar包并复制到服务器的某个木，运行：
+下载后所有的tar包并复制到服务器的某个目录，运行：
 
 ```bash
-# /root/images 就是tar包所在目录，scripts/load-images.sh 是服务部署目录
+# /root/images 就是tar包所在目录，scripts/load-images.sh 是服务部署目录下的脚本
 bash scripts/load-images.sh -l /root/images
 ```
 
@@ -64,7 +64,7 @@ vim configure.sh
 
 **关键配置参数**:
 
-为了快速开始，你只需要配置一个参数为服务器的ip即可，CoStrict客户端将会通过这个ip访问CoStrict后台服务，请务必配置这个参数后继续
+为了快速开始，你只需要配置第一个参数为服务器的ip即可，CoStrict客户端将会通过这个ip访问CoStrict后台服务，请务必配置这个参数后继续
 
 ```sh
 COSTRICT_BACKEND=""
