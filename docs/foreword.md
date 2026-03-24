@@ -12,7 +12,7 @@
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   VSCode Plugin  │────│   API Gateway   │────│  Backend Services│
+│   VSCode Plugin  │────│   API Gateway   │────│ Backend Services │
 │   (CoStrict)    │    │  (Apache APISIX) │    │  (Microservices) │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                │                        │
@@ -29,9 +29,8 @@
 All core features of CoStrict rely on large language models. You need to **prepare the following model services and ensure the model API interfaces are functioning properly**:
 
 ```
-1. Chat model     (provide a complete http://chat_model_ip:chat_model_port/v1/chat/completions interface)
-2. Embedding model (provide a complete http://embedding_model_ip:embedding_model_port/v1/embeddings interface)
-3. Rerank model   (provide a complete http://rerank_model_ip:rerank_model_port/v1/rerank interface)
+1. Chat model (provide a complete http://chat_model_ip:chat_model_port/v1/chat/completions interface)
+
 4. Completion model (provide a complete http://completion_model_ip:completion_model_port/v1/completions interface)
 ```
 
@@ -39,27 +38,23 @@ All core features of CoStrict rely on large language models. You need to **prepa
 
 **Recommended Models** and **Download Links**:
 
+Currently, CoStrict only retains the chat model and completion model
+
 - **Chat model**: `GLM-4.6-FP8` or above, e.g. `GLM-4.7`, `GLM-5`
 
-- **Embedding model**: `gte-modernbert-baseRAG/Embedding`
-
-- **Rerank model**: `gte-reranker-modernbert-baseRAG/Rerank`
+- **Completion model**: `DeepSeek-Coder-V2-Lite-Base`
 
 - **Download links**:
 
 ```
 https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8
-https://modelscope.cn/models/iic/gte-modernbert-base
-https://modelscope.cn/models/iic/gte-reranker-modernbert-base
+https://modelscope.cn/models/ZhipuAI/GLM-5-FP8
+https://modelscope.cn/models/deepseek-ai/DeepSeek-Coder-V2-Lite-Base
 ```
 
 **Recommended Model Deployment Resources**:
 
-- **Chat model**: `4 * H20` (recommended for GLM-4.7-FP8; double for GLM-4.5-FP8)
-
-- **Embedding model**: `0.5 * H20` or `0.5 * RTX4090`
-
-- **Rerank model**: `0.5 * H20` or `0.5 * RTX4090`
+- **Chat model**: `4 * H20` (recommended for GLM-4.7-FP8; double for GLM-5)
 
 **Trial Reminder**:
 
