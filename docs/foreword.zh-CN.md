@@ -29,8 +29,7 @@ CoStrict的核心功能都依赖大语言模型，总共需要 **准备如下模
 
 ```
 1. 对话模型(提供完整的 http://chat_model_ip:chat_model_port/v1/chat/completions 接口)
-2. embedding模型(提供完整的 http://embedding_model_ip:embedding_model_port/v1/embeddings 接口)
-3. rerank 模型(提供完整的 http://rerank_model_ip:rerank_model_port/v1/rerank 接口)
+
 4. 补全模型(提供完整的 http://completion_model_ip:completion_model_port/v1/completions 接口)
 ```
 
@@ -38,27 +37,23 @@ CoStrict的核心功能都依赖大语言模型，总共需要 **准备如下模
 
 **推荐模型** 和 **下载地址**：
 
-- **对话模型**： `GLM-4.6-FP8` 及以上，如 `GLM-4.7` `GLM-5`
+当前CoStrict的只保留了对话模型和补全模型
 
-- **embedding模型**：`gte-modernbert-baseRAG/Embedding`
+- **对话模型**：`GLM-4.6-FP8` 及以上，如 `GLM-4.7` `GLM-5`
 
-- **rerank模型**：`gte-reranker-modernbert-baseRAG/Rerank`
+- **补全模型**：`DeepSeek-Coder-V2-Lite-Base`
 
 - **下载地址**：
 
 ```
 https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8
-https://modelscope.cn/models/iic/gte-modernbert-base
-https://modelscope.cn/models/iic/gte-reranker-modernbert-base
+https://modelscope.cn/models/ZhipuAI/GLM-5-FP8
+https://modelscope.cn/models/deepseek-ai/DeepSeek-Coder-V2-Lite-Base
 ```
 
 **推荐模型部署资源**：
 
-- **对话模型**：`4 * H20` (GLM-4.7-FP8的推荐值,GLM-4.5-FP8则翻倍)
-
-- **embedding模型**：`0.5 * H20` 或 `0.5 * RTX4090`
-
-- **rerank模型**：`0.5 * H20` 或 `0.5 * RTX4090`
+- **对话模型**：`4 * H20` (GLM-4.7-FP8的推荐值,GLM-5则翻倍)
 
 **试用提醒**：
 
@@ -87,3 +82,13 @@ https://modelscope.cn/models/iic/gte-reranker-modernbert-base
 - 操作系统: CentOS 7+ 或 Ubuntu 20.04+ (支持 WSL)
 - Container Runtime: Docker 20.10+ (可参考[离线安装docker](./how-to-install-docker-offline.zh-CN.md)离线安装)
 - 编排工具: Docker Compose 2.0+
+
+### 国产化/信创支持
+
+支持的CPU: 鲲鹏920(Arm，可搭配Kylin v11, OpenEuler 24.03, Ubuntu 22.04系统) 
+
+支持的系统：Kylin V11、OpenEuler 24.03
+
+支持的数据库：Kingbase V9R1C10 （pgsql兼容模式）、PolarDb-PG 17
+
+未在此列表的，表示未进行测试，而非不支持

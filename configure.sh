@@ -26,7 +26,7 @@ MODEL_SERVER_IP="10.72.12.32"
 # REVIEW_MODEL_MODEL="Review-Model"
 # REVIEW_MODEL_APIKEY=""
 # 允许之后配置,并通过命令行更新配置.
-# 代码补全模型的BASEURL,MODEL,APIKEY
+# 代码补全模型的BASEURL,MODEL,APIKEY,次密钥为阿里百炼无效密钥,请替换。
 COMPLETION_BASEURL="https://dashscope.aliyuncs.com/compatible-mode/v1/completions"
 COMPLETION_MODEL="deepseek-r1-distill-qwen-7b"
 COMPLETION_APIKEY="sk-30767fb1a58b4091a8a864e515dbea2c"
