@@ -228,6 +228,101 @@ services:
     networks:
       - shenma
 
+  # Security Review Backend Service (Django)
+  b-llm-sast:
+    image: {{IMAGE_LLM_SAST_BACKEND}}
+    container_name: b-llm-sast
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - SECRET_KEY=admin@123.
+      - ALLOWED_HOSTS=*
+      - DEBUG_CONFIG=0
+      - DATABASE_NAME=llm_sast
+      - DB_USER={{POSTGRES_USER}}
+      - DB_PASSWORD={{PASSWORD_POSTGRES}}
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - UC_SERVER_ADDR=http://20.20.1.28:8000
+      - SESSION_COOKIE_AGE=172800
+      - SESSION_EXPIRE_AT_BROWSER_CLOSE=0
+      - SESSION_REFRESH_TOKEN_EXPIRE_TIME=7200
+      - WORKFLOW_ALLOW=1
+      - REPORT_2PDF_API=http://ci-service:8000/report/report2pdf
+    volumes:
+      - ./data/codereview/llm-sast/log:/DevSecOps/dc/log
+      - ./data/codereview/llm-sast/static:/DevSecOps/dc/static
+      - ./data/codereview/llm-sast/public:/DevSecOps/dc/public
+      - ./data/codereview/llm-sast/tmp:/DevSecOps/dc/tmp
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+    networks:
+      - shenma
+
+  # Security Review Frontend Service (Nginx)
+  f-llm-sast:
+    image: {{IMAGE_LLM_SAST_FRONTEND}}
+    container_name: f-llm-sast
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/codereview/config/llm_sast_nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - b-llm-sast
+      - ci-service
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    networks:
+      - shenma
+
+  # Security Review CI Service (FastAPI)
+  ci-service:
+    image: {{IMAGE_LLM_SAST_CI_SERVICE}}
+    container_name: ci-service
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: ["sh", "-c", "git config --global --add safe.directory '*' && fastapi run web.py"]
+    volumes:
+      - ./config/codereview/config/base/config/costrict/costrict.json:/app/aiagent-sast/data/costrict/costrict.json:ro
+      - ./data/codereview/ci-service/log:/app/aiagent-sast/log
+      - ./data/codereview/ci-service/data:/app/aiagent-sast/data
+      - ./data/codereview/ci-service/tmp:/tmp_data
+      - ./data/codereview/workspaces:/home/appuser/Workspaces
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CHROMIUM_PATH=/usr/lib/chrome-linux/chrome
+      - COSTRICT_CONFIG=/app/aiagent-sast/data/costrict/costrict.json
+      - PLATFORM=http://b-llm-sast:5000
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+    networks:
+      - shenma
+
   credit-manager:
     image: {{IMAGE_CREDIT_MANAGER}}
     command: ["nginx", "-g", "daemon off;"]

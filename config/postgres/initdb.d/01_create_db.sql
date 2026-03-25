@@ -3,3 +3,4 @@ CREATE DATABASE casdoor;
 CREATE DATABASE codereview;
 CREATE DATABASE quota_manager;
 CREATE DATABASE auth;
+CREATE DATABASE llm_sast;
