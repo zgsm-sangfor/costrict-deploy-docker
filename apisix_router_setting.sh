@@ -49,7 +49,6 @@ fi
 ./scripts/apisix_router/ai-gateway.sh
 ./scripts/apisix_router/casdoor.sh
 ./scripts/apisix_router/chatrag.sh
-./scripts/apisix_router/codereview.sh
 ./scripts/apisix_router/completion-v2.sh
 ./scripts/apisix_router/costrict-apps.sh
 ./scripts/apisix_router/credit-manager.sh
