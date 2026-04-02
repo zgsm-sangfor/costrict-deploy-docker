@@ -6,9 +6,11 @@
 
 CoStrict 后端部署工具是基于 Docker Compose 的企业级 AI 代码助手后端服务部署解决方案。该项目提供了完整的微服务架构，包含 AI 网关、身份认证、代码分析、聊天服务等核心组件，支持私有化部署和云端服务两种模式。
 
-> 查看此项目的部署架构，部署的服务器要求、模型要求、模型下载地址等，请访问 [前言](./docs/foreword.zh-CN.md)
+> 查看此项目的部署架构，部署的服务器要求、环境要求、模型要求、模型下载地址等，请访问 [前言](./docs/foreword.zh-CN.md)
 
 ## 快速开始
+
+> 开始前，请确保你对Linux命令行又一定的了解，请确保你已经根据软件要求安装好了Docker 和 Compose.
 
 ### 1. 获取部署配置
 
@@ -26,11 +28,16 @@ https://github.com/zgsm-sangfor/costrict-deploy-docker/releases/
 将压缩包复制到服务器，然后解压
 
 ```bash
-# costrict-server 就是部署目录
+# costrict-server 就是部署目录,请牢记这个目录，请牢记这个目录，请牢记这个目录，这是你的部署目录，后面将会用到
+# 这个目录将存储大部分运行数据，请保证磁盘稳定、充足
 mkdir ./costrict-server
 # 将所有文件解压到 costrict-server,注意，costrict-backend-deploy-v0.0.2.tar.gz 替换为你下载的实际版本的压缩包。
 tar -zxf costrict-backend-deploy-v0.0.2.tar.gz -C costrict-server
+# 进入到部署目录
+cd ./costrict-server
 ```
+
+注意，**./costrict-server** 就是部署目录，
 
 ### 2. 准备后端服务镜像
 
@@ -48,17 +55,18 @@ https://pan.baidu.com/s/5H0ppvaTja4g2MKZs0Ki1-g
 
 当前最新版本: v0.0.3
 
-下载后所有的tar包并复制到服务器的某个目录，运行：
+下载后所有的tar包并复制到服务器的某个目录(比如/root/images)，运行：
 
 ```bash
-# /root/images 就是tar包所在目录，scripts/load-images.sh 是服务部署目录下的脚本
+# /root/images 就是tar包所在目录,请注意替换
+# scripts/load-images.sh 是部署目录下的脚本,请自行查找
 bash scripts/load-images.sh -l /root/images
 ```
 
 
 ### 3. 环境配置
 
-编辑配置文件:
+编辑配置文件(注意，是编辑，不是新建，就在部署目录下,且已经存在一些内容):
 
 ```bash
 vim configure.sh
@@ -69,6 +77,7 @@ vim configure.sh
 为了快速开始，你只需要配置第一个参数为服务器的ip即可，CoStrict客户端将会通过这个ip访问CoStrict后台服务，请务必配置这个参数后继续
 
 ```sh
+# 注意，这个配置就在第一行,直接编辑即可.
 COSTRICT_BACKEND=""
 ```
 
@@ -93,12 +102,12 @@ bash costrict.sh install
 
 ### AI 网关配置 (Higress)
 
-你可以参考下面的教程在页面上配置模型，我们也提供了快速模型配置脚本，简化你的配置过程，见[模型配置自动化脚本](./scripts/model-config/auto-model-config.zh-CN.md)
+你可以参考下面的教程在页面上配置模型，我们也提供了快速模型配置脚本，简化你的配置过程，见[模型配置自动化脚本](./scripts/model-config/auto-model-config.zh-CN.md),这样你可以跳过本步骤。
 
-部署完成后，通过以下地址访问 Higress 控制台，对 `对话` 模型配置检查并调整.
+部署完成后，通过以下地址访问 Higress 控制台，对 `对话` 模型配置检查并调整，再次提醒，通过脚本配置就可以直接跳过此步骤
 
 ```
-# 此url就是提示的第二个url
+# 此url就是部署完成后提示的第二个url
 http://{COSTRICT_BACKEND}:{PORT_HIGRESS_CONTROL}
 ```
 
@@ -121,7 +130,9 @@ http://{COSTRICT_BACKEND}:{PORT_HIGRESS_CONTROL}
 
 ### 可选：身份认证系统配置 (Casdoor)
 
-如果没有特殊要求，请直接跳过此步骤
+如果没有特殊要求(如：对接第三方认证系统)，请直接 跳过此步骤，请跳过此步骤，请跳过此步骤。
+
+第一次测试试用，也请直接 跳过此步骤，请跳过此步骤，请跳过此步骤。
 
 通过以下地址访问 Casdoor 管理界面:
 
