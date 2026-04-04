@@ -2,10 +2,6 @@ config/apisix/config.yaml.tpl
 config/etcd/etcd.conf.yml.tpl
 config/casdoor/app.conf.tpl
 config/code-completion/config.yaml.tpl
-config/codereview/config/issue-manager-config.yaml.tpl
-config/codereview/config/review-checker-config.yaml.tpl
-config/codereview/config/review-manager-config.yaml.tpl
-config/codereview/config/base/config/costrict/costrict.json.tpl
 config/grafana/config/grafana.ini.tpl
 config/grafana/provisioning/datasources/all.yaml.tpl
 config/portal/nginx.conf.tpl

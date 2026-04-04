@@ -18,7 +18,7 @@ DB_HOST="${POSTGRES_HOST:-localhost}"
 DB_PORT="${POSTGRES_PORT:-5432}"
 DB_USER="${POSTGRES_USER:-postgres}"
 DB_PASSWORD="${POSTGRES_PASSWORD}"
-DB_NAMES="${POSTGRES_DATABASES:-chatgpt,auth,quota_manager,codereview,casdoor,codebase_indexer}"
+DB_NAMES="${POSTGRES_DATABASES:-chatgpt,auth,quota_manager,casdoor,codebase_indexer}"
 
 # 备份选项
 BACKUP_TYPE="all"  # data, logical, config, all
