@@ -9,7 +9,6 @@ dirs=(
     "data/postgres"
     "data/weaviate"
     "data/chat-rag/logs"
-    "data/codereview/workspaces"
     "data/oidc-auth/logs"
     "data/es"
     # "data/higress" # higress 有特殊的创建方法
