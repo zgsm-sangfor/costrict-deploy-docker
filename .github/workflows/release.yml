@@ -21,7 +21,7 @@ jobs:
 
       - name: Download costrict.tar.gz from latest release
         run: |
-          gh release download v0.0.1 \
+          gh release download v0.0.3 \
             --repo "${{ github.repository }}" \
             --pattern "costrict.tar.gz" \
             --dir .
