@@ -39,21 +39,25 @@ CoStrict的核心功能都依赖大语言模型，总共需要 **准备如下模
 
 当前CoStrict的只保留了对话模型和补全模型
 
-- **对话模型**：`GLM-4.6-FP8` 及以上，如 `GLM-4.7` `GLM-5`
+- **对话模型**：`GLM-5.1` `GLM-5` `MiniMax-M2.7` `GLM-4.7` (当前最推荐GLM-5.1)
 
-- **补全模型**：`DeepSeek-Coder-V2-Lite-Base`
+- **补全模型**：`Qwen/Qwen3-4B`
 
 - **下载地址**：
 
 ```
-https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8
+https://modelscope.cn/models/ZhipuAI/GLM-5.1-FP8
 https://modelscope.cn/models/ZhipuAI/GLM-5-FP8
-https://modelscope.cn/models/deepseek-ai/DeepSeek-Coder-V2-Lite-Base
+https://modelscope.cn/models/MiniMax/MiniMax-M2.7
+https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8
+
+https://modelscope.cn/models/Qwen/Qwen3-4B
 ```
 
 **推荐模型部署资源**：
 
 - **对话模型**：`4 * H20` (GLM-4.7-FP8的推荐值,GLM-5则翻倍)
+- **补全模型**: `1 * 4090` (Qwen3-4B的推荐值)
 
 **试用提醒**：
 

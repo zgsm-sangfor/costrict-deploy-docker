@@ -40,21 +40,25 @@ All core features of CoStrict rely on large language models. You need to **prepa
 
 Currently, CoStrict only retains the chat model and completion model
 
-- **Chat model**: `GLM-4.6-FP8` or above, e.g. `GLM-4.7`, `GLM-5`
+- **Chat model**: `GLM-5.1` `GLM-5` `MiniMax-M2.7` `GLM-4.7` (Currently, GLM-5.1 is most recommended)
 
-- **Completion model**: `DeepSeek-Coder-V2-Lite-Base`
+- **Completion model**: `Qwen/Qwen3-4B`
 
 - **Download links**:
 
 ```
-https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8
+https://modelscope.cn/models/ZhipuAI/GLM-5.1-FP8
 https://modelscope.cn/models/ZhipuAI/GLM-5-FP8
-https://modelscope.cn/models/deepseek-ai/DeepSeek-Coder-V2-Lite-Base
+https://modelscope.cn/models/MiniMax/MiniMax-M2.7
+https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8
+
+https://modelscope.cn/models/Qwen/Qwen3-4B
 ```
 
 **Recommended Model Deployment Resources**:
 
 - **Chat model**: `4 * H20` (recommended for GLM-4.7-FP8; double for GLM-5)
+- **Completion model**: `1 * 4090` (recommended for Qwen3-4B)
 
 **Trial Reminder**:
 
