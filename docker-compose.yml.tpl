@@ -55,43 +55,10 @@ services:
       - ./data/postgres:/var/lib/postgresql/data
       - ./config/postgres/initdb.d:/docker-entrypoint-initdb.d
     # port mapping is only debug 
-    # ports:
-    #   - "35432:5432/tcp"
+    ports:
+      - "35432:5432/tcp"
     networks:
       - shenma
-  mysql:
-    image: {{IMAGE_MYSQL}}
-    container_name: mysql
-    restart: unless-stopped
-    
-    # 从环境变量读取配置
-    environment:
-      MYSQL_ROOT_PASSWORD: costrict-root
-      MYSQL_DATABASE: mysql
-      MYSQL_USER: nacos
-      MYSQL_PASSWORD: nacos
-    command: >
-      --sort_buffer_size=4194304
-      --read_rnd_buffer_size=8388608
-      --join_buffer_size=4194304
-      --tmp_table_size=67108864
-      --max_heap_table_size=67108864
-    # ports:
-    #   - "33306:3306"
-    
-    volumes:
-      # 持久化数据
-      - ./data/mysql:/var/lib/mysql
-      # 初始化脚本（首次启动时执行）
-      - ./config/mysql/init-scripts:/docker-entrypoint-initdb.d
-    networks:
-      - shenma
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
   nacos:
     image: {{IMAGE_NACOS}}
@@ -99,13 +66,13 @@ services:
     environment:
       # 必选：使用外置 MySQL 模式
       - MODE=standalone
-      - SPRING_DATASOURCE_PLATFORM=mysql
-      - MYSQL_SERVICE_HOST=mysql
-      - MYSQL_SERVICE_PORT=3306
-      - MYSQL_SERVICE_DB_NAME=nacos
-      - MYSQL_SERVICE_USER=nacos
-      - MYSQL_SERVICE_PASSWORD=nacos
-      - MYSQL_SERVICE_DB_PARAM=characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_PLATFORM=postgresql
+      - DB_SERVICE_HOST=postgres
+      - DB_SERVICE_PORT=5432
+      - DB_SERVICE_DB_NAME=nacos
+      - DB_SERVICE_USER={{POSTGRES_USER}}
+      - DB_SERVICE_PASSWORD={{PASSWORD_POSTGRES}}
+      - DB_SERVICE_DB_PARAM=tcpKeepAlive=true&reWriteBatchedInserts=true&ApplicationName=nacos_java
       # 可选：JVM 内存配置（根据服务器资源调整）
       - JVM_XMS=512m
       - JVM_XMX=512m
@@ -114,13 +81,24 @@ services:
       - NACOS_AUTH_IDENTITY_VALUE=nacos
       - NACOS_AUTH_TOKEN=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=
     ports:
-    #   - "31848:8848"   # Nacos 主端口
-      - "31808:8080"   # 管理端口
-    #   - "9848:9848"   # gRPC 端口（Nacos 2.x+ 需要）
-    #   - "9849:9849"   # gRPC 端口（Nacos 2.x+ 需要）
+      - "31848:8848"   # Nacos 主端口
+      - "{{PORT_NACOS}}:8080"   # 管理端口
+    #   - "9848:9848"   # gRPC 端口（Nacos 2.x+ 需要）,不暴露
+    #   - "9849:9849"   # gRPC 端口（Nacos 2.x+ 需要），不暴露
     restart: unless-stopped
     depends_on:
-      - mysql
+      - postgres
+    networks:
+      - shenma
+
+  model-proxy:
+    image: {{IMAGE_MODEL_PROXY}}
+    restart: always
+    volumes:
+      - ./config/model-proxy/config.yaml:/app/config.yaml
+    # port mapping is only debug 
+    # ports:
+    #   - "{{PORT_MODEL_PROXY}}:8080"
     networks:
       - shenma
 
@@ -145,8 +123,8 @@ services:
       - ./config/chat-rag/rules.yaml:/app/etc/rules.yaml:ro
     depends_on:
       - redis
-      - higress
       - nacos
+      - model-proxy
     networks:
       - shenma
 
@@ -210,26 +188,6 @@ services:
       dataSourceName: "host=postgres port=5432 user={{POSTGRES_USER}} password={{PASSWORD_POSTGRES}} dbname=casdoor sslmode=disable"
     depends_on:
       - postgres
-    networks:
-      - shenma
-
-  higress:
-    image: {{IMAGE_HIGRESS}}
-    restart: always
-    ports:
-    #  - "{{PORT_AI_GATEWAY}}:8080"
-      - "{{PORT_HIGRESS_CONTROL}}:8001"
-    environment:
-      MODE: full
-      O11Y: on
-      CONFIG_TEMPLATE: ai-gateway
-      GATEWAY_HTTP_PORT: 8080
-      GATEWAY_HTTPS_PORT: 8443
-      CONSOLE_PORT: 8001
-    volumes:
-      - ./data/higress:/data
-    depends_on:
-      - portal
     networks:
       - shenma
 

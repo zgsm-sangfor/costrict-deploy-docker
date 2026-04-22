@@ -5,7 +5,6 @@ base_dir="${1:-.}"
 dirs=(
     "data/etcd"
     "data/redis"
-    "data/mysql"
     "data/postgres"
     "data/weaviate"
     "data/chat-rag/logs"
@@ -27,14 +26,6 @@ done
 echo "Now need root privileges to chown the directories"
 
 sudo chown -R  1001  "${base_dir}/data/etcd/"
-
-# higress 资源准备
-## 如果higress文件夹为空，则复制
-
-if [ ! -d "${base_dir}/data/higress" ]; then
-    mkdir -p "${base_dir}/data/higress"
-    sudo cp -r -a "${base_dir}/config/higress/configs/".  "${base_dir}/data/higress/"
-fi
 
 # portal 资源准备
 

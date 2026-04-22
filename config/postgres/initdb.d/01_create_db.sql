@@ -2,3 +2,4 @@
 CREATE DATABASE casdoor;
 CREATE DATABASE quota_manager;
 CREATE DATABASE auth;
+CREATE DATABASE nacos;

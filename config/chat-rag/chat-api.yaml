@@ -8,7 +8,7 @@ Log:
 
 # Models supported by function calling
 LLM:
-  Endpoint: "http://higress:8080/v1/chat/completions"
+  Endpoint: "http://model-proxy:8080/v1/chat/completions"
 
 LLMTimeout:
   # 单次连续空闲阈值（毫秒），默认 30000ms
@@ -29,7 +29,7 @@ nacos:
   # Nacos gRPC port
   # grpcPort: 9848
   # Nacos namespace (leave empty for default namespace)
-  namespace: "8e96a146-756b-4d0c-888c-382fd792f55b"
+  namespace: "costrict"
   # Nacos group for configuration
   group: "CHAT_RAG"
   # Timeout in seconds for Nacos operations
