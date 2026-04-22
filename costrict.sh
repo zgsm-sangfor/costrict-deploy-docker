@@ -148,7 +148,7 @@ cmd_prepare() {
 
 cmd_user_reminder() {
   info "管理用户访问 (casdoor) http://${COSTRICT_BACKEND}:${PORT_CASDOOR}/"
-  info "配置Chat模型请访问 (higress) http://${COSTRICT_BACKEND}:${PORT_HIGRESS_CONTROL}/"
+  info "配置Chat模型请访问 (nacos) http://${COSTRICT_BACKEND}:${PORT_NACOS}/"
   info "BaseUrl请设置为 http://${COSTRICT_BACKEND}:${PORT_APISIX_ENTRY}/"
 }
 

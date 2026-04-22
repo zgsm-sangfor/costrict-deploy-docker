@@ -82,49 +82,96 @@ COSTRICT_BACKEND=""
 ### 4. Service Deployment
 
 A single command is all it takes to bring up all CoStrict services:
-
 ```sh
 bash costrict.sh install
 ```
 
-When the process completes, output similar to the following will be displayed — take note of it:
+When the process completes, output similar to the following will be displayed — save it somewhere:
 
 ```
-[INFO]  Admin user access: http://192.168.79.130:39009/
-[INFO]  Configure Chat model at: http://192.168.79.130:38001/
+[INFO]  Admin user access (casdoor): http://192.168.79.130:39009/
+[INFO]  Configure Chat model at (nacos): http://192.168.79.130:31808/
 [INFO]  Set BaseUrl to: http://192.168.79.130:39080/
+
 ```
 
 ## Service Configuration
 
-### AI Gateway Configuration (Higress)
+### Model Configuration
 
+Higress has been removed in the current version. To configure models, please go to nacos, e.g. `http://192.168.79.130:31808/` (**use the actual URL from your output**).
 
-You can refer to the tutorial below to configure the model on the page. We also provide a quick model configuration script to simplify your configuration process; see [Model Configuration Automation Script](./scripts/model-config/auto-model-config.md), so you can skip this step.
-
-After deployment, access the Higress console at the following address to check and adjust the `chat` model configuration. Again, you can skip this step by using the script configuration.
-
+Log in to nacos:
 ```
-# This URL is the second URL shown after deployment completes
-http://{COSTRICT_BACKEND}:{PORT_HIGRESS_CONTROL}
+Username: nacos
+Password: nacos
 ```
 
-**Default admin credentials** (please change after login):
+1. Open **Configuration Management → Configuration List → costrict** (below the "Configuration Management" heading).
+2. Find the `model-config` entry, click **Edit**, and modify the **Configuration Content** according to the instructions — do not touch anything else.
+3. Publish after editing; changes take effect in real time automatically.
 
+The following is the configuration reference/example. Note:
+
+**Please follow YAML or JSON format strictly.**
+
+**Please follow YAML or JSON format strictly.**
+
+**Please follow YAML or JSON format strictly.**
+
+When publishing, nacos performs a format check. If the error `Configuration may have syntax errors, are you sure you want to submit?` appears, do **not** submit.
+
+```yaml
+# Configuration example and explanation — edit this in nacos, do not copy this config directly.
+models:
+    # Example 1
+    # id: the model name visible in the plugin / model list — freely customizable
+  - id: Kimi-K2-Moonshot
+    # Model information
+    publicInfo:
+      # Max output tokens, must be smaller than contextWindow (32K is usually sufficient). Use Arabic numerals.
+      maxTokens: 32000
+      # Context window size provided by your model provider. If the value is less than 16000, switch to a larger model. Use Arabic numerals.
+      contextWindow: 200000
+    # Model key settings
+    privateConfig:
+      # The real model name provided by your model provider
+      convertedName: KimiK1000000
+      # Full endpoint path /v1/chat/completions
+      addr: http://127.0.0.1:6666/v1/chat/completions
+      # Custom headers — add as many as needed
+      extraHeaders:
+        # Auth header usually goes here; ask your model provider for the value
+        Authorization: "sk-xxxxxxxx"
+      # Whether to skip SSL verification. Only needed when the service uses HTTPS with a self-signed certificate. Ask your model provider.
+      skipSSLVerify: false
+    # Example 2 — same as Example 1 but with more supplementary notes.
+    # Model 2: add as many models as you need, following YAML format strictly.
+  - id: Qwen3.5
+    # Detailed model configuration options
+    publicInfo:
+      object: model
+      maxTokens: 32000
+      contextWindow: 200000
+      # Whether image input is supported
+      supportsImages: true
+      supportsComputerUse: false
+      supportsPromptCache: false
+      supportsReasoningBudget: false
+      requiredReasoningBudget: false
+      # Description
+      description: Qwen3.5 to glm
+      # Quota — this feature is not currently active.
+      creditConsumption: 3
+      creditDiscount: 1
+    privateConfig:
+      convertedName: glm-5-tokens
+      addr: http://127.0.0.1:32323/v1/chat/completions
+      extraHeaders:
+        Authorization: sk-***
+      skipSSLVerify: false
 ```
-Username: admin
-Password: 123
-```
 
-Configuration steps:
-1. Access the Higress management interface
-2. Configure upstream LLM service providers
-3. Set routing rules and load balancing strategies
-4. Configure rate limiting and security policies
-
-Detailed configuration guide: [Higress Configuration Document](./docs/higress/higress.md)
-
-After configuration, you can start using CoStrict directly — see the **Client Integration** section below.
 
 ### Optional: Identity Authentication System Configuration (Casdoor)
 

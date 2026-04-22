@@ -90,43 +90,91 @@ COSTRICT_BACKEND=""
 bash costrict.sh install
 ```
 
-运行结束后，会提示类似的内容,可以记录下来：
+运行结束后，会提示类似的内容,请找个文本文件记录下来：
 
 ```
-[INFO]  管理用户访问 http://192.168.79.130:39009/
-[INFO]  配置Chat模型请访问 http://192.168.79.130:38001/
+[INFO]  管理用户访问 (casdoor) http://192.168.79.130:39009/
+[INFO]  配置Chat模型请访问 (nacos) http://192.168.79.130:31808/
 [INFO]  BaseUrl请设置 http://192.168.79.130:39080/
+
 ```
 
 ## 服务配置
 
-### AI 网关配置 (Higress)
+### 模型配置
 
-你可以参考下面的教程在页面上配置模型，我们也提供了快速模型配置脚本，简化你的配置过程，见[模型配置自动化脚本](./scripts/model-config/auto-model-config.zh-CN.md),这样你可以跳过本步骤。
+当前版本已经移除了higress, 如果需要配置模型，请到nacos中配置,访问nacos,如`http://192.168.79.130:31808/`(**请注意,请你以实际输出为准**)
 
-部署完成后，通过以下地址访问 Higress 控制台，对 `对话` 模型配置检查并调整，再次提醒，通过脚本配置就可以直接跳过此步骤
-
+登录nacos
 ```
-# 此url就是部署完成后提示的第二个url
-http://{COSTRICT_BACKEND}:{PORT_HIGRESS_CONTROL}
-```
-
-**管理账户默认用户名密码** (登录后请及时修改):
-
-```
-用户名: admin
-密码: 123
+用户名: nacos
+密码：nacos
 ```
 
-配置步骤:
-1. 访问 Higress 管理界面
-2. 配置上游 LLM 服务提供商
-3. 设置路由规则和负载均衡策略
-4. 配置限流和安全策略
+1. 打开 配置管理-> 配置列表-> costrict(在`配置管理`这四个大字的下方)。
+2. 找到 `model-config` 配置，点击编辑,根据提示编辑`配置内容`,其他不要动。
+3. 编辑后发布即可，会自动实时更新。
 
-详细配置指南: [Higress 配置文档](./docs/higress/higress.zh-CN.md)
+以下是配置说明/示例，注意：
 
-配置结束后，就可以直接使用CoStrict,请见后续章节 **客户端集成**
+**请严格按照yaml或者json格式配置**
+
+**请严格按照yaml或者json格式配置**
+
+**请严格按照yaml或者json格式配置**
+
+发布时nacos会有格式检查,如果报错: `配置信息可能有语法错误, 确定提交吗?`请不要提交。
+
+```yaml
+# 配置示例和解释，请在nacos中修改，不用复制这个配置。
+models:
+    # 配置示例 1 
+    # id,模型的名称, 你在插件中看到的名字,也就是你在模型列表中看到的名字，随便自定义
+  - id: Kimi-K2-Moonshot
+    # 模型的信息
+    publicInfo:
+      # 最大输出, 比contextWindow小 (一般32K够用了),请用阿拉伯数字.
+      maxTokens: 32000
+      # 上下文窗口,找模型提供者给,如果模型提供者给你的值小于16000,请换更大的模型，请用阿拉伯数字.
+      contextWindow: 200000
+    # 模型的key相关
+    privateConfig:
+      # 模型的真实名字,找模型提供者给
+      convertedName: KimiK1000000
+      # 地址,完整的路径/v1/chat/completions
+      addr: http://127.0.0.1:6666/v1/chat/completions
+      # 自定义头,可以添加任意多个
+      extraHeaders:
+        # 认证头一般放这里,请询问模型提供者值是多少
+        Authorization: "sk-xxxxxxxx"
+      # 是否跳过ssl校验,一般只有服务是https且采用自签名的ssl证书才需要设置，请询问模型提供者。
+      skipSSLVerify: false
+    # 配置示例 2,和1一样，只是有更多的补充说明。
+    # 模型2，需要多少个模型就加多少个,请严格按照yaml格式配置
+  - id: Qwen3.5
+    # 模型的一些配置项,详细
+    publicInfo:
+      object: model
+      maxTokens: 32000
+      contextWindow: 200000
+      # 是否支持图片
+      supportsImages: true
+      supportsComputerUse: false
+      supportsPromptCache: false
+      supportsReasoningBudget: false
+      requiredReasoningBudget: false
+      # 描述信息
+      description: Qwen3.5 to glm
+      # 配额，当前这个功能没有。
+      creditConsumption: 3
+      creditDiscount: 1
+    privateConfig:
+      convertedName: glm-5-tokens
+      addr: http://127.0.0.1:32323/v1/chat/completions
+      extraHeaders:
+        Authorization: sk-***
+      skipSSLVerify: false
+```
 
 ### 可选：身份认证系统配置 (Casdoor)
 
