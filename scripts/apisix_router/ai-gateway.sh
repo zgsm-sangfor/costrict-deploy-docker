@@ -3,7 +3,7 @@
 curl -i http://$APISIX_ADDR/apisix/admin/upstreams -H "$AUTH" -H "$TYPE" -X PUT -d '{
     "id": "ai-gateway",
     "nodes": {
-      "higress:8080": 1
+      "model-proxy:8080": 1
     },
     "type": "roundrobin"
   }'
