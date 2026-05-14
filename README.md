@@ -132,6 +132,7 @@ models:
       # Max output tokens, must be smaller than contextWindow (32K is usually sufficient). Use Arabic numerals.
       maxTokens: 32000
       # Context window size provided by your model provider. If the value is less than 16000, switch to a larger model. Use Arabic numerals.
+      # Warning: This number cannot be arbitrarily increased. You must fill in the context length that the model actually supports.
       contextWindow: 200000
     # Model key settings
     privateConfig:
@@ -141,7 +142,7 @@ models:
       addr: http://127.0.0.1:6666/v1/chat/completions
       # Custom headers — add as many as needed
       extraHeaders:
-        # Auth header usually goes here; ask your model provider for the value
+        # The authentication header is generally placed here. Please ask the model provider what the value should be. Please note that you must fill in the actual authentication header required by the requested model; do not use abbreviations or shorthand.
         Authorization: "sk-xxxxxxxx"
       # Whether to skip SSL verification. Only needed when the service uses HTTPS with a self-signed certificate. Ask your model provider.
       skipSSLVerify: false
@@ -171,6 +172,11 @@ models:
         Authorization: sk-***
       skipSSLVerify: false
 ```
+
+如何测试是否配置成功
+
+1. 根据当前文档，继续完成后续步骤，安装CoStrict插件后，尝试和模型对话。
+2. 参考文档：[如何测试模型](./docs/model-test/How-to-test-model.md)
 
 
 ### Optional: Identity Authentication System Configuration (Casdoor)
