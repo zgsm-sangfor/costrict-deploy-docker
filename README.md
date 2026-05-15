@@ -121,6 +121,12 @@ The following is the configuration reference/example. Note:
 
 When publishing, nacos performs a format check. If the error `Configuration may have syntax errors, are you sure you want to submit?` appears, do **not** submit.
 
+Before configuration, please confirm the model's support:
+
+- The model supports calls in the OpenAI /v1/chat/completions interface format; it doesn't matter if the path (route) is different.
+- The model supports at least 16,000 tokens (minimum test context, only to test whether the model works properly).
+- The model supports function call (tool calling), meaning the request body supports the `tools` field and `"tool_choice": "auto"`.
+
 ```yaml
 # Configuration example and explanation — edit this in nacos, do not copy this config directly.
 models:
@@ -172,12 +178,11 @@ models:
         Authorization: sk-***
       skipSSLVerify: false
 ```
+How to test whether the configuration is successful:
 
-如何测试是否配置成功
+Follow the current documentation to complete the subsequent steps. After installing the CoStrict plugin, try having a conversation with the model.
 
-1. 根据当前文档，继续完成后续步骤，安装CoStrict插件后，尝试和模型对话。
-2. 参考文档：[如何测试模型](./docs/model-test/How-to-test-model.md)
-
+Refer to the documentation: [How to Test the Model](./docs/model-test/How-to-test-model.md)
 
 ### Optional: Identity Authentication System Configuration (Casdoor)
 

@@ -125,6 +125,11 @@ bash costrict.sh install
 
 发布时nacos会有格式检查,如果报错: `配置信息可能有语法错误, 确定提交吗?`请不要提交。
 
+配置前，请确定模型的支持情况：
+- 模型支持openai的 /v1/chat/completions接口格式的调用,路径(路由)不一样没关系；
+- 模型至少支持16000(最小测试上下文,仅测试模型是否正常)；
+- 模型支持function call工具调用,也就是请求体中支持 `tools`字段,和`"tool_choice": "auto"`；
+
 ```yaml
 # 配置示例和解释，请在nacos中修改，不用复制这个配置。
 models:
@@ -177,11 +182,10 @@ models:
       skipSSLVerify: false
 ```
 
-How to test whether the configuration is successful:
+如何测试是否配置成功
 
-Follow the current documentation to complete the subsequent steps. After installing the CoStrict plugin, try having a conversation with the model.
-
-Refer to the documentation: [How to Test the Model](./docs/model-test/How-to-test-model.md)
+1. 根据当前文档，继续完成后续步骤，安装CoStrict插件后，尝试和模型对话。
+2. 参考文档：[如何测试模型](./docs/model-test/How-to-test-model.zh-CN.md)
 
 ### 可选：身份认证系统配置 (Casdoor)
 
