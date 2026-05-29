@@ -71,6 +71,7 @@ Download from [GitHub release](https://github.com/docker/compose/releases), reco
 sudo mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo mkdir -p /root/.docker/cli-plugins
 cp -a /usr/local/bin/docker-compose  ~/.docker/cli-plugins/docker-compose # Add to docker subcommands
 ```
 
